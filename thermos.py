@@ -7,6 +7,7 @@
 #import models
 
 #basedir = os.path.abspath(os.path.dirname(__file__))
+#from os.path import abspath, dirname; app.root_path = abspath(dirname(__file__))
 
 
 #fake login
@@ -29,7 +30,7 @@
 
 #@app.route('/add', methods=['GET', 'POST'] )
 #def add():
-#    form = BookmarkForm()		
+#    form = BookmarkForm()
 #    if form.validate_on_submit():
 #        url = form.url.data
 #	description = form.description.data
@@ -51,4 +52,3 @@
 
 #if __name__ == '__main__':
     #app.run(debug=True)
-

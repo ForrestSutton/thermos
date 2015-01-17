@@ -1,9 +1,13 @@
-from flask   import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required, login_user
 
 from app import app, db, login_manager
 from forms   import BookmarkForm, LoginForm
 from models  import User, Bookmark
+
+
+#from os.path import abspath, dirname; app.root_path = abspath(dirname(__file__))
+
 
 @login_manager.user_loader
 def load_user(userid):
@@ -14,7 +18,7 @@ def load_user(userid):
 def index():
     return render_template('index.html', new_bookmarks=Bookmark.newest(5))
 
-@app.route('/add', methods=['GET', 'POST'] )
+@app.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookmarkForm()
@@ -50,7 +54,7 @@ def login():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_tempalate('404.html'),404
+    return render_template('404.html'),404
 
 @app.errorhandler(500)
 def server_error(e):

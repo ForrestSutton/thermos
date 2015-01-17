@@ -4,13 +4,17 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+
+basedir = os.path.abspath(os.curdir)
+#basedir = os.path.dirname(os.path.abspath(__file__))
+#basedir = os.path.abspath(os.path.dirname(__file__))
+#from os.path import abspath, dirname; app.root_path = abspath(dirname(__file__))
 
 app = Flask(__name__)
 
 #configure database
 app.config['SECRET_KEY']= '\xb4\xdfj\xd8\n~\x9c\xbc]\xbd\x12S\x8a\xc5\xcb\x05_\xc0\xc4\xf0\xa5\xb0r\xaf'
-app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///'+ os.path.join(basedir, 'thermos.db')
+app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:////'+ os.path.join(basedir, 'thermos.db')
 app.config['DEBUG'] = True
 db = SQLAlchemy(app)
 
@@ -22,4 +26,3 @@ login_manager.init_app(app)
 
 import models
 import views
-

@@ -9,7 +9,7 @@ Thermos -- Bookmarks for user {{ user.username }}
 	    <header>
 		    <h1>Bookmarks for {{ user.name }}</h1>
 
-		    <ul>
+		<ul>
 			{% for bm in user.bookmarks %}
 			    <li>
 			    	<a href="{{ bm.url }}">{{ bm.description }}</a>
@@ -17,8 +17,8 @@ Thermos -- Bookmarks for user {{ user.username }}
 			   </li>
 			{% else %}
 			    <li> this user has not added any bookmarks yet.</li>
-		        {% endfor %}
-	    	     </ul>
+		  {% endfor %}
+	 </ul>
 	   </header>
 	</article>
- {% endblock %}	
+ {% endblock %}

@@ -6,6 +6,8 @@ from flask.ext.script import Manager, prompt_bool
 
 manager = Manager(app)
 
+
+
 @manager.command
 def initdb():
 	db.create_all()

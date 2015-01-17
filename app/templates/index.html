@@ -4,7 +4,6 @@
 Thermos -- Welcome
 {% endblock %}
 
-
 {% block content %}
 	<article>
 		<header>
@@ -16,22 +15,12 @@ Thermos -- Welcome
 			{% if new_bookmarks %}
 			   <ul>
 			    {% for bm in new_bookmarks %}
-			       <li>{{ bm.user }} added <a href="{{ bm.url }}">{{ bm.url }}</a></li>
-			    {% endfor %}   
+			       <li>{{ bm.user }} added <a href='{{ url_for('user', username=bm.user.username) }}'>{{ bm.url }}</a></li>
+			    {% endfor %}
 		 	   </ul>
 			   {% else %}
 			   no boookmarks yet.
 			   {% endif %}
 			</section>
-
-		<section>
-		    <h2> article section h2</h2>
-		    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna
-		</section>
-	       <section>
-		  <h2>article section h2</h2>
-	          <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna
-	   </section>
-   </article>	   
+   </article>
 {% endblock %}
-

@@ -4,6 +4,7 @@ from flask.ext.wtf.html5 import URLField
 from wtforms.validators import DataRequired, url
 
 
+
 class BookmarkForm(Form):
     url = URLField('The URL for your bookmark:', validators=[DataRequired(), url()])
     description = StringField('description')
