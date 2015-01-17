@@ -1,0 +1,12 @@
+
+*.pyc
+*.sqlite3
+*.sqlite3-journal
+
+#cloud 9 files
+.c9/*
+
+
+#mac os x 
+.DS_Store
+
