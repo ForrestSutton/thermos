@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-from thermos import app, db
-from thermos.models import User
+from app import app, db
+from app.models import User
 from flask.ext.script import Manager, prompt_bool
 
 manager = Manager(app)
@@ -23,4 +23,3 @@ def dropdb():
 
 if __name__ == '__main__':
     manager.run()
-
