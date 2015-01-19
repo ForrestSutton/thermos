@@ -1,14 +1,14 @@
-"""initial
+"""tags
 
-Revision ID: 1f589b4d7c97
-Revises: None
-Create Date: 2015-01-19 15:42:17.370020
+Revision ID: 1c03fe48a5d7
+Revises: 3f21f3285683
+Create Date: 2015-01-19 18:06:51.741021
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '1f589b4d7c97'
-down_revision = None
+revision = '1c03fe48a5d7'
+down_revision = '3f21f3285683'
 
 from alembic import op
 import sqlalchemy as sa
