@@ -4,6 +4,7 @@ Flask
 Flask-Login
 Flask-Script
 Flask-WTF
+flask-migrate
 Flask-SQLAlchemy
 SQLAlchemy
 WTForms

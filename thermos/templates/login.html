@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "form_macros.html" import render_field %}
+{% from "templates/form_macros.html" import render_field %}
 
 {% block title %}
 Thermos -- Login
@@ -11,10 +11,10 @@ Thermos -- Login
 	 <form action="" method="post">
              {{form.hidden_tag()}}
 	     <table>
-		 {{ render_field(form.username, size=50) }} 
-		 {{ render_field(form.password, size=50) }} 
-		 {{ render_field(form.remember_me ) }} 
-		 {{ render_field(form.submit) }} 
+		 {{ render_field(form.username, size=50) }}
+		 {{ render_field(form.password, size=50) }}
+		 {{ render_field(form.remember_me ) }}
+		 {{ render_field(form.submit) }}
             </table>
 	</form>
       </section>
@@ -22,4 +22,3 @@ Thermos -- Login
 
 {% block sidebar %}
 {% endblock %}
-
