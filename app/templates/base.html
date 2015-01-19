@@ -19,8 +19,13 @@
 		    <a href="{{ url_for('index')}}"><h1 class="title">Thermos</h1></a>
                 <nav>
                     <ul>
-			      <li><a href="{{ url_for('add') }}">Add URL</a></li>
-            <li><a href="{{ url_for('login') }}">Sign up</a></li>
+                    <li><a href="{{ url_for('add') }}">Add URL</h1></a>
+                  {% if current_user.is_authenticated() %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">
+                      My Links</a></li>
+                      <li><a href="{{ url_for('logout') }}">Sign out</a></li>
+                  {% else %}
+            <li><a href="{{ url_for('signup') }}">Sign up</a></li>
             <li><a href="{{ url_for('login') }}">Sign in</a></li>
                     </ul>
                 </nav>

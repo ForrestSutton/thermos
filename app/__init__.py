@@ -4,11 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-
-basedir = os.path.abspath(os.curdir)
-#basedir = os.path.dirname(os.path.abspath(__file__))
-#basedir = os.path.abspath(os.path.dirname(__file__))
-#from os.path import abspath, dirname; app.root_path = abspath(dirname(__file__))
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
