@@ -58,7 +58,7 @@ class User(db.Model, UserMixin):
     def get_by_username(username):
         return User.query.filter_by(username=username).first()
 
-    def __rep__(self):
+    def __repr__(self):
         return "<User '{}'>".format(self.username)
 
 class Tag(db.Model):
@@ -76,5 +76,5 @@ class Tag(db.Model):
     def all():
         return Tag.query.all()
 
-    def __rep__(self):
-        return self.name
+def __repr__(self):
+    return self.name

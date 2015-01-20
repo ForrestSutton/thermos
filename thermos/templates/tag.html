@@ -11,7 +11,7 @@ Thermos -- Bookmarks tagged {{ tag }}
        <h1>Bookmarks tagged {{ tag }}</h1>
 
        {% if tag.bookmark.count() > 0 %}
-           {% with bookmarks=tag.bookmark %}
+           {% with bookmarks=tag.bookmarks %}
                {% include "bookmark_list.html" %}
            {% endwith %}
        {% else %}

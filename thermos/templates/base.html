@@ -54,10 +54,10 @@
 
 		{% block sidebar %}
 		   <aside>
-			   <h3>Tag</h3>
-         {% for t in all_tags() %}
-			      <a href="{{url_for('tag', name=t) }}">{{ t }}</a>
-         {% endfor %}
+		        <h3>Tag</h3>
+                            {% for t in all_tags() %}
+			         <a href="{{ url_for('tag', name=t) }}">{{ t }}</a>
+                            {% endfor %}
 		    </aside>
 	 	{% endblock %}
 
