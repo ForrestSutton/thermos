@@ -3,7 +3,7 @@ from flask_login import login_required, login_user
 
 from thermos import app, db, login_manager
 from forms   import BookmarkForm, LoginForm, SignupForm
-from models  import User, Bookmark
+from models  import User, Bookmark, Tag
 #basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -23,7 +23,8 @@ def add():
     if form.validate_on_submit():
         url = form.url.data
         description = form.description.data
-        bm = models.Bookmark(user=logged_in_user(), url=url, description=description)
+        tag = form.tag.data
+        bm = models.Bookmark(user=logged_in_user(), url=url, description=description, tags=tags)
         db.session.add(bm)
         db.session.commit()
         flash("Stored '{}'".format(bm.description))
