@@ -25,7 +25,7 @@ class BookmarkForm(Form):
 
         stripped = [t.strip() for t in self.tags.data.split(',')]
         not_empty = [tag for tag in stripped if tag]
-        tagset = set[not_empty]
+        tagset = set(not_empty)
         self.tags.data = ",".join(tagset)
 
         return True
