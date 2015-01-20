@@ -1,8 +1,10 @@
 from datetime import datetime
 from sqlalchemy import desc
 from thermos import db
-#db = SQLAlchemy()
 from flask_login import UserMixin
+from werkzeug.security import check_password_hash, generate_password_hash
+
+
 
 tags = db.Table('bookmark_tag',
     db.Column('tag_id', db.Integer,db.ForeignKey('tag.id')),
@@ -54,7 +56,7 @@ class User(db.Model, UserMixin):
 
     @staticmethod
     def get_by_username(username):
-        return user.query.filter_by(username=username).first()
+        return User.query.filter_by(username=username).first()
 
     def __rep__(self):
         return "<User '{}'>".format(self.username)

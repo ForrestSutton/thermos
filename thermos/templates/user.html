@@ -1,4 +1,4 @@
-{%extends "base"  %}
+{% extends "base.html" %}
 
 {% block title %}
 Thermos -- Bookmarks for user {{ user.username }}
@@ -16,7 +16,7 @@ Thermos -- Bookmarks for user {{ user.username }}
         {% endwith %}   
 			{% else %}
 			    <li> this user has not added any bookmarks yet.</li>
-		  {% endfor %}
+		  {% endif %}
 	 </ul>
 	   </header>
 	</article>

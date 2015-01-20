@@ -29,7 +29,7 @@ def add():
         return redirect(url_for('index'))
     return render_template('bookmark_form.html', form=form, title="Add a bookmark")
 
-@app.route('/edit/<int:bookmark>', methods=['GET', 'POST'])
+@app.route('/edit/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
 def edit_bookmark(bookmark_id):
     bookmark = Bookmark.query.get_or_404(bookmark_id)
@@ -73,7 +73,7 @@ def login():
         if user is not None:
             login_user(user, form.remember_me.data)
             flash("Logged in successfully as {}.".format(user.username))
-            return redirect(request.args.get('next') or url_for('index'))
+            return redirect(request.args.get('next') or url_for('user', username=user.username))
         flash('Incorrect username or password.')
     return render_template('login.html', form=form)
 
@@ -82,13 +82,11 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route("/signup/",methods=["GET","POST"] )
+@app.route("/signup/",methods=["GET","POST"])
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
-                     username=form.username.data,
-                     password=form.password.data)
+        user = User(email=form.email.data, username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Welcome, {}! please login'.format(user.username))
