@@ -199,6 +199,29 @@ article.flashes {
 	margin-bottom: 1em;
 }
 
+/* fix form layout with flashes */
+section {
+  clear: left;
+}
+
+/* bookmark list styling */
+ul.bookmarks {
+  list-style: none none;
+  padding-left: 0;
+}
+
+.bookmark {
+  padding-bottom: 5em;
+  border-top: 1px solid #7EA6BF;
+  padding: 1em 0;
+}
+
+a.header {
+  color: #326786;
+  text-decoration: none;
+  display: block;
+}
+
 
 .error, .error input {
 	color: red;

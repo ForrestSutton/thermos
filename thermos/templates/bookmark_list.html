@@ -1,7 +1,9 @@
 
 <ul class="bookmarks">
   {% for bookmark in bookmarks %}
-
+  <li>
+    {% include "bookmark.html" %}
+  </li>
   <li>
       <a class="header" href="{{ bookmark.url }}">
         <h3 class ="description">

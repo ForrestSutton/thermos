@@ -1,0 +1,13 @@
+<div class="bookmark">
+  <a class="header" href="{{ bookmark.url }}"
+      <h3 class="description">
+        {{ bookmark.description|truncate(50, killwords=True) }}
+      </h3>
+    <span class="url">
+      {{ bookmark.url|truncate(50, killwords=True) }}
+    </span>
+  </a>
+  <div class="info">
+    <span class="tags">
+          {% if bookmark.tag %}
+              {% for t in bookmark._tags %}<a href="#">{{ t }}

@@ -4,8 +4,6 @@ from flask_login import login_required, login_user
 from thermos import app, db, login_manager
 from forms   import BookmarkForm, LoginForm, SignupForm
 from models  import User, Bookmark, Tag
-#basedir = os.path.abspath(os.path.dirname(__file__))
-
 
 @login_manager.user_loader
 def load_user(userid):
@@ -45,6 +43,20 @@ def edit_bookmark(bookmark_id):
         return redirect(url_for('user', username=current_user.username))
     return render_template('bookmark_form.html', form=form, title="Edit bookmark")
 
+@app.route('/delete/<int:bookmark_id>', method=['GET', 'POST'])
+@login_required
+def delete_bookmark(bookmark_id):
+    bookmark = Bookmark.query.get_or_404(bookmark_id)
+    if current_user != bookmark.user:
+        abort(403)
+    if request.method == "POST":
+        db.session.delete(bookmark)
+        db.session.commit()
+        flash("Deleted '{}'".format(bookmark.description))
+        return redirect(url_for('user', username=current_user.username))
+    else:
+        flash("Please confirm deleting the bookmarks.")
+    return render_template('confirm_delete.html', bookmark=bookmark, nolinks=True)
 
 @app.route('/user/<username>')
 def user(username):
@@ -82,6 +94,11 @@ def signup():
         flash('Welcome, {}! please login'.format(user.username))
         return redirect(url_for('login'))
     return render_template("signup.html", form=form)
+
+@app.route('/tag/<name>')
+def tag(name):
+    tag = Tag.query.filter_by(name=name).first_or_404()
+    return render_template('tag.html', tag=tag)
 
 @app.errorhandler(404)
 def page_not_found(e):
