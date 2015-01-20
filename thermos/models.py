@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy import desc
 from thermos import db
+#db = SQLAlchemy()
 from flask_login import UserMixin
 
 tags = db.Table('bookmark_tag',

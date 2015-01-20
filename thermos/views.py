@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, abort
+from flask import  render_template, flash, redirect, url_for, request, abort
 from flask_login import login_required, login_user
 
 from thermos import app, db, login_manager
@@ -14,7 +14,7 @@ def load_user(userid):
 def index():
     return render_template('index.html', new_bookmarks=Bookmark.newest(5))
 
-@app.route('/add', methods=['GET', 'POST'])
+@app.route('/add/', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookmarkForm()
@@ -43,7 +43,7 @@ def edit_bookmark(bookmark_id):
         return redirect(url_for('user', username=current_user.username))
     return render_template('bookmark_form.html', form=form, title="Edit bookmark")
 
-@app.route('/delete/<int:bookmark_id>', method=['GET', 'POST'])
+@app.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
 def delete_bookmark(bookmark_id):
     bookmark = Bookmark.query.get_or_404(bookmark_id)
@@ -64,7 +64,7 @@ def user(username):
     return render_template('user.html', user=user)
 
 
-@app.route("/login", methods=["GET","POST"])
+@app.route("/login/", methods=["GET","POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -82,7 +82,7 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route("/signup",methods=["GET","POST"] )
+@app.route("/signup/",methods=["GET","POST"] )
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
