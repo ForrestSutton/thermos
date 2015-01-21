@@ -7,5 +7,7 @@ Flask-WTF
 flask-migrate
 Flask-SQLAlchemy
 flask-debugtoolbar
+flask-testing
+nose
 SQLAlchemy
 WTForms
