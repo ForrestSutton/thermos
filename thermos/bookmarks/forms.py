@@ -1,9 +1,9 @@
 from flask.ext.wtf import Form
 from wtforms.fields import StringField, BooleanField, SubmitField
 from flask.ext.wtf.html5 import URLField
-from wtforms.validators import DataRequired, Regexp, ValidationError
+from wtforms.validators import DataRequired, url, Regexp, ValidationError
 
-from models import  Bookmark, Tag
+from ..models import  Bookmark, Tag
 
 class BookmarkForm(Form):
     url = URLField('The URL for your bookmark:', validators=[DataRequired(), url()])

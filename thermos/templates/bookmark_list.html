@@ -5,7 +5,7 @@
     {% include "bookmark.html" %}
   </li>
   <li>
-      <a class="header" href="{{ bookmark.url }}">
+      <a class="header" href="{{ bookmarks.url }}">
         <h3 class ="description">
           {{ bookmark.description|truncate(50, killwords=True) }}
         </h3>
@@ -18,20 +18,20 @@
         <span class="tags">
           {% if bookmark.tags %}
               {% for t in bookmark._tags %}
-	      <a href="{{ url_for('tag', name=t) }}">{{ t }}</a>
+	      <a href="{{ url_for('bookmarks.tag', name=t) }}">{{ t }}</a>
               {% endfor %}
           {% else %}No tags.
           {% endif %}
         </span>
         <br>
 
-        Added by <a href="{{ url_for('user', username=bookmark.user.username) }}">
+        Added by <a href="{{ url_for('auth.user', username=bookmark.user.username) }}">
           {{ bookmark.user.username }}
         </a>
         {{ moment(bookmark.date).fromNow() }}
         {% if current_user == bookmark.user %}
         <span class="editlinks">
-          <a href="{{ url_for('edit_bookmark', bookmark_id=bookmark.id)}}">edit</a>
+          <a href="{{ url_for('bookmarks.edit_bookmark', bookmark_id=bookmark.id)}}">edit</a>
         </span>
         {% endif %}
 

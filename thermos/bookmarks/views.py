@@ -7,7 +7,7 @@ from .. import db
 from ..models import User, Bookmark, Tag
 
 
-@bookmark.route('/add/', methods=['GET', 'POST'])
+@bookmarks.route('/add/', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookmarkForm()
@@ -22,22 +22,22 @@ def add():
         return redirect(url_for('index'))
     return render_template('bookmark_form.html', form=form, title="Add a bookmark")
 
-@bookmark.route('/edit/<int:bookmark_id>', methods=['GET', 'POST'])
+@bookmarks.route('/edit/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
 def edit_bookmark(bookmark_id):
-bookmark = Bookmark.query.get_or_404(bookmark_id)
-if current_user != bookmark.user:
-abort(403)
-form = BookmarkForm(obj=bookmark)
-if form.validate_on_submit():
-form.populate_obj(bookmark)
-db.session.commit()
-    flash("Stored '{}'".format(bookmark.description))
-    return redirect(url_for('user', username=current_user.username))
-return render_template('bookmark_form.html', form=form, title="Edit bookmark")
+    bookmark = Bookmark.query.get_or_404(bookmark_id)
+    if current_user != bookmark.user:
+        abort(403)
+    form = BookmarkForm(obj=bookmark)
+    if form.validate_on_submit():
+        form.populate_obj(bookmark)
+        db.session.commit()
+        flash("Stored '{}'".format(bookmark.description))
+        return redirect(url_for('user', username=current_user.username))
+    return render_template('bookmark_form.html', form=form, title="Edit bookmark")
 
 
-@bookmark.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
+@bookmarks.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
 def delete_bookmark(bookmark_id):
     bookmark = Bookmark.query.get_or_404(bookmark_id)
@@ -52,12 +52,12 @@ def delete_bookmark(bookmark_id):
         flash("Please confirm deleting the bookmarks.")
     return render_template('confirm_delete.html', bookmark=bookmark, nolinks=True)
 
-@bookmark.route('/user/<username>')
+@bookmarks.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('.user.html', user=user)
 
-@bookmark.route('/tag/<name>')
+@bookmarks.route('/tag/<name>')
 def tag(name):
     tag = Tag.query.filter_by(name=name).first_or_404()
     return render_template('tag.html', tag=tag)
