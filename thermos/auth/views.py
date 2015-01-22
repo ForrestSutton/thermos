@@ -23,7 +23,7 @@ def login():
 @auth.route("/logout")
 def logout():
     logout_user()
-    return redirct(url_for('main.index.html'))
+    return redirct(url_for('main.index'))
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():

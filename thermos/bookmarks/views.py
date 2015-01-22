@@ -34,7 +34,7 @@ def edit_bookmark(bookmark_id):
         db.session.commit()
         flash("Stored '{}'".format(bookmark.description))
         return redirect(url_for('.user', username=current_user.username))
-    return render_template('bookmark_form.html', form=form, title="Edit bookmark")
+    return render_template('bookmark_form.html', form=form)
 
 
 @bookmarks.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
