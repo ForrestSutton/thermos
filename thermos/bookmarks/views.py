@@ -19,7 +19,7 @@ def add():
         db.session.add(bm)
         db.session.commit()
         flash("Stored '{}'".format(bm.description))
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     return render_template('bookmark_form.html', form=form, title="Add a bookmark")
 
 @bookmarks.route('/edit/<int:bookmark_id>', methods=['GET', 'POST'])
@@ -33,7 +33,7 @@ def edit_bookmark(bookmark_id):
         form.populate_obj(bookmark)
         db.session.commit()
         flash("Stored '{}'".format(bookmark.description))
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('.user', username=current_user.username))
     return render_template('bookmark_form.html', form=form, title="Edit bookmark")
 
 

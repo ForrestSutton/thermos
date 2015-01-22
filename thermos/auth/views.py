@@ -17,13 +17,13 @@ def login():
             return redirect(request.args.get('next') or url_for('.user', username=user.username))
         
         flash('Incorrect username or password.')
-    return render_template(".login.html", form=form)
+    return render_template("login.html", form=form)
 
 
 @auth.route("/logout")
 def logout():
     logout_user()
-    return redirct(url_for('.index.html'))
+    return redirct(url_for('main.index.html'))
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -34,4 +34,4 @@ def signup():
         db.session.commit()
         flash('Welcome, {}! please login'.format(user.username))
         return redirect(url_for('.login'))
-    return render_template(".signup.html", form=form)    
+    return render_template("signup.html", form=form)    
