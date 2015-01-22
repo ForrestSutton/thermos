@@ -2,11 +2,10 @@
 # Install with `pip install -r requirements.txt`.
 Flask
 Flask-Login
-Flask-Migrate
-Flask-Moment
-Flask-SQLAlchemy
 Flask-Script
 Flask-WTF
+flask-migrate
+Flask-SQLAlchemy
 flask-debugtoolbar
 flask-testing
 nose
