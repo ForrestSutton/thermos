@@ -7,7 +7,7 @@ from .. import db
 from ..models import User, Bookmark, Tag
 
 
-@bookmarks.route('/add/', methods=['GET', 'POST'])
+@bookmarks.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookmarkForm()
@@ -36,7 +36,6 @@ def edit_bookmark(bookmark_id):
         return redirect(url_for('.user', username=current_user.username))
     return render_template('bookmark_form.html', form=form)
 
-
 @bookmarks.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
 def delete_bookmark(bookmark_id):
@@ -55,7 +54,7 @@ def delete_bookmark(bookmark_id):
 @bookmarks.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('.user.html', user=user)
+    return render_template('user.html', user=user)
 
 @bookmarks.route('/tag/<name>')
 def tag(name):

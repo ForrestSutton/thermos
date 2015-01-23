@@ -9,6 +9,7 @@ def load_user(userid):
     return User.query.get(int(userid))
 
 @main.route('/')
+@main.route('/index')
 def index():
     return render_template('index.html', new_bookmarks=Bookmark.newest(5))
 
