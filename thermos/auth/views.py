@@ -30,6 +30,6 @@ def signup():
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Welcome, {}! please login'.format(user.username))
+        flash('Welcome, {}! Please login.'.format(user.username))
         return redirect(url_for('.login'))
     return render_template("signup.html", form=form)
