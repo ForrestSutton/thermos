@@ -6,7 +6,6 @@ from .forms import BookmarkForm
 from .. import db
 from ..models import User, Bookmark, Tag
 
-
 @bookmarks.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
@@ -24,7 +23,7 @@ def add():
 
 @bookmarks.route('/edit/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
-def edit_bookmark(bookmark_id):
+def edit(bookmark_id):
     bookmark = Bookmark.query.get_or_404(bookmark_id)
     if current_user != bookmark.user:
         abort(403)
@@ -38,7 +37,7 @@ def edit_bookmark(bookmark_id):
 
 @bookmarks.route('/delete/<int:bookmark_id>', methods=['GET', 'POST'])
 @login_required
-def delete_bookmark(bookmark_id):
+def delete(bookmark_id):
     bookmark = Bookmark.query.get_or_404(bookmark_id)
     if current_user != bookmark.user:
         abort(403)

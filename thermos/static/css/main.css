@@ -157,98 +157,121 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+   /* link styling */
+   a,
+   a:visited {
+     color: #1E5373;
+   }
+   a:hover, aside a:hover, aside a:visited:hover {
+     color: #D39447;
+   }
 
-a {
-	color:#8F540D;
-}
+   aside a {
+     color: #FFD6A3;
+   }
 
-a:hover {
-	color:#D39447;
-}
+   aside a:hover {
+     color: #F5BB73;
+   }
 
-a:visited {
-	color: #1E5373;
-}
+   aside a:visited {
+     color: #D39447;
+   }
 
-h1, h2, h3, h4, h5, h6 {
-	color: #1E5373;
-}
+   h1, h2, h3, h4, h5, h6 {
+     color: #1E5373;
+   }
 
-.main aside h3,
-footer h3{
-	color: white;
-}
+   .main aside h3,
+   footer h3,
+   footer a,
+   footer a:visited {
+     color: white;
+   }
 
-/* flashes styling */
+   .flashes ul {
+     margin: 0 0;
+     background: #FFD6A3;
+     color: #000;
 
-flashes ul {
-	margin: 0 0;
-	background: #FFD6A3;
-	color: #000;
+     list-style-type: none;
+     list-style: none;
+   }
 
-	list-style-type: none;
-	list-stype: none;
-}
+   /* flashes styling */
 
-.flash ul{
-	background: #FFD6A3;
-	color: #000;
-}
+   .flashes ul{
+     background: #FFD6A3;
+     color: #000;
+   }
 
-article.flashes {
-	margin-bottom: 1em;
-}
+   article.flashes {
+     margin-bottom: 1em;
+   }
 
-/* fix form layout with flashes */
-section {
-  clear: left;
-}
+   /* fix form layout with flashes */
+   section {
+     clear: left;
+   }
 
-/* bookmark list styling */
-ul.bookmarks {
-  list-style: none none;
-  padding-left: 0;
-}
+   /* bookmark list styling */
+   ul.bookmarks {
+     list-style: none none;
+     padding-left: 0;
+   }
 
-.bookmark {
-  padding-bottom: 5em;
-  border-top: 1px solid #7EA6BF;
-  padding: 1em 0;
-}
+   .bookmark {
+     padding-bottom: .5em;
+     border-top: 1px solid #7EA6BF;
+     padding: 1em 0;
+   }
 
-a.header {
-  color: #326786;
-  text-decoration: none;
-  display: block;
-}
+   a.header {
+     color: #326786;
+     text-decoration: none;
+     display: block;
+   }
 
+   a.header h3 {
+     margin: 0 0;
+   }
 
-.error, .error input {
-	color: red;
-}
+   div.info {
+     font-size: .95em;
+     color: #666666;
+   }
 
-tr.error td ul {
-	margin-top: 0;
-}
+   span.editlinks {
+     float: right;
+   }
 
-tr.submit button {
-	margin-top: 20px;
-}
+   .error, .error input {
+     color: red;
+   }
 
-input, button {
-	margin-left: 10px;
+   tr.error td ul {
+     margin-top: 0;
+   }
 
-}
+   tr.submit button {
+     margin-top: 20px;
+   }
 
+   input, textarea,
+   div.select2-container {
+     width:100%;
+   }
 
+   input[type="checkbox"],
+   input[type="submit"] {
+     width: auto;
+   }
 
-
-
-
-
-
-
-
+   input, button, textarea,
+   div.select2-container {
+     margin-left: 10px;
+   }
+   
 /* ==========================================================================
    Media Queries
    ========================================================================== */

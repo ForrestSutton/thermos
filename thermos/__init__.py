@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask.ext.moment import Moment
-#from flask_debugtoolbar import DebugToolbarExtension
+from flask_debugtoolbar import DebugToolbarExtension
 
 from .config import config_by_name
 
@@ -13,7 +13,7 @@ login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.login_view = "auth.login"
 
-#toolbar = DebugToolbarExtension()
+toolbar = DebugToolbarExtension()
 
 #for displaying timestamps
 moment = Moment()

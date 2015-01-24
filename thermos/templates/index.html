@@ -10,12 +10,13 @@ Thermos -- Welcome
 			<h1>Welcome</h1>
 			<p>Thermos is a simple social bookmarking site.
 		</header>
+		
 		<section>
 			<h2>Recently Added<h2/>
-			{% if new_bookmarks.count() %}
+			{% if new_bookmarks.count() > 0 %}
 			   {% with bookmarks=new_bookmarks %}
 						{% include "bookmark_list.html" %}
-				 {% endwith %}		
+				 {% endwith %}
 			{% else %}
 			   no boookmarks yet.
 			{% endif %}

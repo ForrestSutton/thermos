@@ -1,3 +1,5 @@
+import json
+
 from flask import  render_template, flash, redirect, url_for, request, abort
 from flask_login import login_required, login_user, logout_user, current_user
 
@@ -14,7 +16,7 @@ def load_user(userid):
 def index():
     return render_template('index.html', new_bookmarks=Bookmark.newest(5))
 
-@app.route('/add/', methods=['GET', 'POST'])
+@app.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookmarkForm()

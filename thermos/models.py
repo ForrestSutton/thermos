@@ -1,10 +1,10 @@
 from datetime import datetime
+
 from sqlalchemy import desc
-from thermos import db
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
-
+from thermos import db
 
 tags = db.Table('bookmark_tag',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
@@ -31,6 +31,8 @@ class Bookmark(db.Model):
     def tags(self, string):
         if string:
             self._tags = [Tag.get_or_create(name) for name in string.split(',')]
+        else:
+            self._tags = []
 
     def __repr__(self):
         return "<Bookmark '{}': '{}'>".format(self.description, self.url)
@@ -59,7 +61,7 @@ class User(db.Model, UserMixin):
         return User.query.filter_by(username=username).first()
 
     def __repr__(self):
-        return '<User %r>'.format(self.username)
+        return "<User '{}'>".format(self.username)
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -76,5 +78,5 @@ class Tag(db.Model):
     def all():
         return Tag.query.all()
 
-def __repr__(self):
-    return self.name
+    def __repr__(self):
+        return self.name

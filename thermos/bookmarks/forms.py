@@ -1,9 +1,8 @@
 from flask.ext.wtf import Form
-from wtforms.fields import StringField, BooleanField, SubmitField
+from wtforms.fields import StringField
 from flask.ext.wtf.html5 import URLField
-from wtforms.validators import DataRequired, url, Regexp, ValidationError
-
-from ..models import  Bookmark, Tag
+from wtforms.validators import DataRequired, Regexp, url
+#from ..models import  Bookmark, Tag
 
 class BookmarkForm(Form):
     url = URLField('The URL for your bookmark:', validators=[DataRequired(), url()])
@@ -22,3 +21,11 @@ class BookmarkForm(Form):
 
         if not self.description.data:
             self.description.data = self.url.data
+
+          # filter out empty and duplicate tag names
+        stripped = [t.strip() for t in self.tags.data.split(',')]
+        not_empty = [tag for tag in stripped if tag]
+        tagset = set(not_empty)
+        self.tags.data = ",".join(tagset)
+
+        return True
