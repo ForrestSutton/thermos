@@ -14,14 +14,14 @@ def login():
         if user is not None and user.check_password(form.password.data):
             login_user(user, form.remember_me.data)
             flash("Logged in successfully as {}.".format(user.username))
-            return redirect(request.args.get('next') or url_for('auth.user', username=user.username))
+            return redirect(request.args.get('next') or url_for('bookmarks.user', username=user.username))
         flash('Incorrect username or password.')
     return render_template("login.html", form=form)
 
 @auth.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('.index'))
+    return redirect(url_for('main.index'))
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -30,6 +30,6 @@ def signup():
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Welcome, {}! please login'.format(user.username))
+        flash('Welcome, {}! Please login.'.format(user.username))
         return redirect(url_for('.login'))
     return render_template("signup.html", form=form)

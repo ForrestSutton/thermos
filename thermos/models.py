@@ -59,7 +59,7 @@ class User(db.Model, UserMixin):
         return User.query.filter_by(username=username).first()
 
     def __repr__(self):
-        return "<User '{}'>".format(self.username)
+        return '<User %r>'.format(self.username)
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
